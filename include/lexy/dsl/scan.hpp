@@ -559,7 +559,7 @@ struct _scan : rule_base
             if (!result)
                 return false;
 
-            if constexpr (std::is_void_v<typename decltype(result)::value_type>)
+            if constexpr (std::is_void_v<decltype(result.value())>)
                 return NextParser::parse(context, reader, LEXY_FWD(args)...);
             else
                 return NextParser::parse(context, reader, LEXY_FWD(args)...,
